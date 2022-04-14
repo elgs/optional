@@ -3,18 +3,18 @@ package optional
 import "log"
 
 type Optional[T any] struct {
-	Data  *T
+	Data  T
 	Error error
 }
 
-func New[T any](data *T, err error) *Optional[T] {
+func New[T any](data T, err error) *Optional[T] {
 	return &Optional[T]{
 		Data:  data,
 		Error: err,
 	}
 }
 
-func (this *Optional[T]) LogIfError() {
+func (this *Optional[T]) PrintIfError() {
 	if this.Error != nil {
 		log.Println(this.Error)
 	}
