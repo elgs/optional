@@ -15,13 +15,19 @@ func New[T any](data *T, err error) *Optional[T] {
 }
 
 func (this *Optional[T]) LogIfError() {
-	log.Println(this.Error)
+	if this.Error != nil {
+		log.Println(this.Error)
+	}
 }
 
 func (this *Optional[T]) PanicIfError() {
-	log.Panicln(this.Error)
+	if this.Error != nil {
+		log.Panicln(this.Error)
+	}
 }
 
 func (this *Optional[T]) FatalIfError() {
-	log.Fatalln(this.Error)
+	if this.Error != nil {
+		log.Fatalln(this.Error)
+	}
 }
